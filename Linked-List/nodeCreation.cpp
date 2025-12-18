@@ -3,8 +3,10 @@ using namespace std;
 
 // Linked list is like data structure to store data in linear way where every
 // node is connected to next node by storing address of next node.
+//
 // Node mainly consist of data(stores value which we want to store) and
 // next(pointer to next node).
+//
 // Head is basicaly entry list of linked list, it is reference to very first
 // node.
 // Keep in mind that head is not node, it is ponter to the node that is
