@@ -55,6 +55,8 @@ void insertAtEnd(int val) {
 // curr->next and temp->pre to curr. After this we make curr->next to temp. Also
 // now we also have to update temp->next->pre to temp so that it now point to
 // temp not curr.
+//
+// Note:- I haven't take the edge cases.
 void insertionAtPosition(int pos, int val) {
   Node *temp = new Node(val);
   Node *curr = head;
@@ -65,4 +67,48 @@ void insertionAtPosition(int pos, int val) {
   temp->pre = curr;
   curr->next = temp;
   temp->next->pre = temp;
+}
+
+// In this we simply move head to its next pointer and then simply delete it.
+void deleteAtStart() {
+  if (head != nullptr) {
+    Node *temp = head;
+    head = head->next;
+    delete temp;
+
+    if (head)
+      head->pre = nullptr;
+  }
+}
+
+// To delete at end we first traverse the list to end and then for current's
+// next's previous will become nullptr as now it is end. Then we just delete
+// current.
+void deleteAtEnd() {
+  if (head->next == nullptr) {
+    delete head;
+    head = nullptr;
+  } else {
+    Node *curr = head;
+    while (curr->next) {
+      curr = curr->next;
+    }
+    curr->pre->next = nullptr;
+    delete curr;
+  }
+}
+
+// To delete at any position we simply traverse to that point and then just
+// update the next of current's previous and the pre of current's next. Then we
+// just simply delete it.
+//
+// Note:- I haven't take the edge cases.
+void deleteAtPosition(int pos) {
+  Node *curr = head;
+  while (pos--) {
+    curr = curr->next;
+  }
+  curr->pre->next = curr->next;
+  curr->next->pre = curr->pre;
+  delete curr;
 }
