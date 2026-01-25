@@ -12,7 +12,7 @@ using namespace std;
 // getMin() – Retrieve the minimum element from the stack in O(1) time. If
 // the stack is empty, return -1.
 // -----------------------------------------------------------------------------
-// To solve this problem in O(n) time complexity we can use modoulus(%) operator
+// To solve this problem in O(1) time complexity we can use modoulus(%) operator
 // for hasing pushed value and minimum value in single integer. Since we can
 // push number b/w 1 to 100, formula for hasing:-
 // [ Hashed no. = Original no. * 101 + min(original no. , stack's top % 101) ]
