@@ -8,6 +8,12 @@ using namespace std;
 // 3. isEmpty()
 // 4. isFull()
 // 5. start()
+//
+// Originally there is so much memory wastage in queue. So, to overcome that we
+// use circular queue.
+// Circular Queue is special queue in which if there is empty space in starting
+// of array using which queue is implemented then we start pushing value in that
+// space and update our front and rear accordingly.
 
 class Queue {
   int *arr;
@@ -23,7 +29,7 @@ public:
 
   bool isEmpty() { return front == -1; }
 
-  bool isFull() { return rear == size; }
+  bool isFull() { return (rear + 1) % size == front; }
 
   void push(int x) {
     if (this->isEmpty()) {
@@ -34,7 +40,7 @@ public:
       cout << "Queue Overflow\n";
       return;
     } else {
-      rear++;
+      rear = (rear + 1) % size;
       arr[rear] = x;
     }
   }
@@ -47,7 +53,7 @@ public:
       this->front = -1;
       this->rear = -1;
     } else {
-      front++;
+      front = (front + 1) % size;
     }
   }
 
