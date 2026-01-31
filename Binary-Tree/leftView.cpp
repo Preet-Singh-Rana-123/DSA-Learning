@@ -34,8 +34,11 @@ vector<int> leftView(Node *root) {
   q.push(root);
 
   while (!q.empty()) {
-    ans.push_back(q.front()->data); // pushing only front's data into ans as its the leftmost.
-    n = q.size();            // n for only first traversing current level before entring next level. 
+    ans.push_back(
+        q.front()
+            ->data); // pushing only front's data into ans as its the leftmost.
+    n = q.size();    // n for only first traversing current level before entring
+                     // next level.
     while (n--) {
       temp = q.front();
       q.pop();
@@ -47,6 +50,35 @@ vector<int> leftView(Node *root) {
       }
     }
   }
+  return ans;
+}
+
+// To solve this using recursion we have to keep track of level while pushing
+// left's data into vector.
+// Now, we only push into ans vector when level == ans's size because if
+// ans.size is greater than level that means we have allready visited that level
+// and pushed its leftmost allready. Now we are comming to taht level while
+// backtracking.
+
+void leftPush(Node *root, vector<int> &ans, int level) {
+  if (root == nullptr) {
+    return;
+  }
+  if (level == ans.size()) {
+    ans.push_back(root->data);
+  }
+
+  level++;
+
+  leftPush(root->left, ans, level);
+  leftPush(root->right, ans, level);
+}
+
+vector<int> leftView2(Node *root) {
+  vector<int> ans;
+  int level = 0;
+  leftPush(root, ans, level);
+
   return ans;
 }
 
