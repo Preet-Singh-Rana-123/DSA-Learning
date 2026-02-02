@@ -80,7 +80,5 @@ Node *createBinaryTree() {
 
 int main() {
   Node *root = createBinaryTree();
-  int sum = sumBT(root);
-  cout << "Size of binary tree: " << sum << "\n";
   return 0;
 }
