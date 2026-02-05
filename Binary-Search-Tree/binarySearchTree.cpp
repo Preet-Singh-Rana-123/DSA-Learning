@@ -16,6 +16,8 @@ public:
 // Binary search tree is a special kind of Binary tree in which the parent
 // node's left side is less and right side is greater than parent node's data.
 // It is usefull in searching of element effectively.
+//
+// Keep in mind that inorder traversal of bst is always in ascening order.
 
 // insertion time-comlexity:- O(h), his height of tree.
 Node *insert(Node *root, int data) {
