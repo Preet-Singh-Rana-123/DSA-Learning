@@ -1,5 +1,3 @@
-#include <algorithm>
-#include <climits>
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -15,26 +13,28 @@ public:
   }
 };
 
-// Given the root of a Binary Search Tree (BST), return the minimum difference
-// between the values of any two different nodes in the tree.
-// ---------------------------------------------------------------------
-// To solve this problem we us fact that BST's inorder traversal is in assending
-// order, because we get min distance between two nodes that are in assending
-// order.
-// e.g 3,6,8,9,13 here min distance is 6-3 not 9-3.
+// Given a Binary Search Tree. Your task is to complete the function which will
+// return the kth largest element without doing any modification in the Binary
+// Search Tree.
+// -----------------------------------------------------------------
+// To solve this problem we will once again do inorder traversal but this time
+// we go right-node-left to traverse in descending order. By this we can easily
+// get kth largest no.
 
-void findMin(Node *root, int &prev, int &ans) {
+void findKLargest(Node *root, int &k, int &ans) {
   if (root == nullptr) {
     return;
   }
-
-  findMin(root->left, prev, ans);
-  if (prev != INT_MIN) {
-    ans = min(ans, root->data - prev);
+  findKLargest(root->right, k, ans);
+  k--;
+  if (k == 0) {
+    ans = root->data;
+    return;
   }
-  prev = root->data;
-
-  findMin(root->right, prev, ans);
+  if (k <= 0) {
+    return;
+  }
+  findKLargest(root->left, k, ans);
 }
 
 Node *insert(Node *root, int data) {
