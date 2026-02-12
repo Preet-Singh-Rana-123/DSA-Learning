@@ -11,7 +11,6 @@ void dfs(vector<vector<int>> &adj, vector<bool> &visited, int node) {
 
   for (int i = 0; i < adj[node].size(); i++) {
     if (!visited[adj[node][i]]) { // visiting node only if it is unvisited.
-      visited[adj[node][i]] = 1;  // again making it visited
       dfs(adj, visited,
           adj[node][i]); // backtracking to check any unvisited node.
     }
