@@ -47,10 +47,31 @@ bool isBipartiteBFS(vector<vector<int>> &adj) {
   return 1;
 }
 
+// Solve it using DFS is also same we have to keep check of those 3 condition
+// while traversing.
+bool isBipartiteDFS(vector<vector<int>> &adj, vector<int> &color, int node) {
+  for (int i = 0; i < adj[node].size(); i++) {
+    if (color[adj[node][i]] == -1) {      // checking condition 1.
+      color[adj[node][i]] = !color[node]; // marking color of adjacent node
+      // return false if not bipartite
+      if (!isBipartiteDFS(adj, color, adj[node][i])) {
+        return 0;
+      }
+    } else {
+      if (color[adj[node][i]] == color[node]) { // checking condition 3.
+        return 0;
+      }
+    }
+  }
+  return 1;
+}
+
 int main() {
   vector<vector<int>> edges = {{0, 3}, {1, 2}, {3, 2}, {0, 2}};
   int V = 4;
   vector<vector<int>> adj(V);
+  vector<int> color(adj.size(), -1);
+  color[0] = 0;
 
   for (auto &e : edges) {
     int u = e[0];
@@ -60,6 +81,12 @@ int main() {
   }
 
   if (isBipartiteBFS(adj)) {
+    cout << "Its a Bipartite Graph\n";
+  } else {
+    cout << "Not a Bipartite Graph\n";
+  }
+
+  if (isBipartiteDFS(adj, color, 0)) {
     cout << "Its a Bipartite Graph\n";
   } else {
     cout << "Not a Bipartite Graph\n";
