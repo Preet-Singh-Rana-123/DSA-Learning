@@ -3,6 +3,9 @@
 #include <vector>
 using namespace std;
 
+// Bipartite Graph are used in recomendation system of youtube,reel,post,etc and
+// it used in many more area.
+
 // Given a Graph with V vertices (Numbered from 0 to V-1) and E edges. Check
 // whether the graph is bipartite or not.
 
