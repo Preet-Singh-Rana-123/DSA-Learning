@@ -9,6 +9,8 @@ using namespace std;
 // Dijkstra's algorithm is a fundamental graph search algorithm used to find the
 // shortest path from a single source node to all other nodes in a weighted
 // graph.
+//
+// **** NOTE:- Dijkstra algorithm does not work on negative weight.
 
 // --------- METHOD 1 -------------
 // To solve this problem we follow the bellow approach:-
@@ -21,6 +23,8 @@ using namespace std;
 //
 // Time Complexity of this method: O(V^2)
 // Space Complexity of this method: O(V)
+//
+// Usefull in dense graph
 
 vector<int> dijkstraAlgo1(int V, int src, vector<vector<int>> &edges) {
   vector<vector<pair<int, int>>> adj(V);
@@ -75,6 +79,10 @@ vector<int> dijkstraAlgo1(int V, int src, vector<vector<int>> &edges) {
 //    i. Look at all unexplored nodes.
 //    ii. if(distance[neighbour] > distance[node] + weight) then:
 //           distance[neighbour] = distance[node] + weight
+//
+// Time Complexity: O(E log(V))
+//
+// Usefull in sparse graph
 
 vector<int> dijkstraAlgo2(int V, int src, vector<vector<int>> &edges) {
   vector<vector<pair<int, int>>> adj(V);
