@@ -25,9 +25,22 @@ int climbStairs(int i, int n, vector<int> &dp) {
   return dp[i] = climbStairs(i + 1, n, dp) + climbStairs(i + 2, n, dp);
 }
 
+// Bottom up approach
+int climbStairs2(int n){
+    vector<int> dp(n+2,-1);
+    dp[n] = 1;
+    dp[n+1] = 0;
+
+    for(int i=n-1;i>=0;i--){
+        dp[i] = dp[i+1] + dp[i+2];
+    }
+
+    return dp[0];
+}
+
 int main() {
   int n = 12;
   vector<int> dp(n + 2, -1);
-  cout << "Ways to climb 12 stairs: " << climbStairs(0, n, dp) << "\n";
+  cout << "Ways to climb 12 stairs: " << climbStairs2(n) << "\n";
   return 0;
 }
