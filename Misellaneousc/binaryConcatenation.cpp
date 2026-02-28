@@ -8,7 +8,9 @@ using namespace std;
 // To solve this probelm we do bit manipulation.
 // If we observe we can see that to add binary of next no. we have to simply
 // make space for the no. we add and then simply add it to current no. For e.g.
-// :- 1 -> 1 (1 digit)  --> 1 << 2 = 100 2 -> 10 (2 digit) --> 110 << 2 = 11000
+// :-
+// 1 -> 1 (1 digit)  --> 1 << 2 = 100
+// 2 -> 10 (2 digit) --> 110 << 2 = 11000
 // 3 -> 11 (2 digit) --> 11100 << 3 = 11100000
 // 4 -> 100 (3 digit) --> 11100100 << 3 = 11100100000
 // 5 -> 101 (3 digit)
