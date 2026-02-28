@@ -26,6 +26,7 @@ int climbStairs(int i, int n, vector<int> &dp) {
 }
 
 // Bottom up approach
+// provide space optimization.
 int climbStairs2(int n){
     vector<int> dp(n+2,-1);
     dp[n] = 1;
